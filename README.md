@@ -12,8 +12,8 @@ For example, if you're incrementally rewriting a server-generated application in
 
 Inside your `app/router.js`, turboify your server-generated web application by configuring the routes you want loaded by Ember:
 
-```
+```js
 Router.map(function() {
   //            <route name> <server url>        <optional parameters>
-  this.turboify('settings',  '/legacy/settings', {container: '#content', path: '/admin/settings'});
+  this.turboify('settings',  '/legacy/settings', { container: '#content', path: '/admin/settings' });
 });
