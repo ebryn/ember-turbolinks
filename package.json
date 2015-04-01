@@ -1,6 +1,6 @@
 {
   "name": "ember-turbolinks",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ember-Turbolinks makes migrating your server-generated apps to Ember.js significantly easier by using techniques pioneered by the pjax and Rails' Turbolinks projects",
   "directories": {
     "doc": "doc",
