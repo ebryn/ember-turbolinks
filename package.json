@@ -1,7 +1,7 @@
 {
   "name": "ember-turbolinks",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "Ember-Turbolinks makes migrating your server-generated apps to Ember.js significantly easier by using techniques pioneered by the pjax and Rails' Turbolinks projects",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +11,7 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": "https://github.com/ebryn/ember-turbolinks",
   "engines": {
     "node": ">= 0.10.0"
   },
