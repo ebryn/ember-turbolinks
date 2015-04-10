@@ -8,6 +8,33 @@ Ember.RouterDSL.prototype.turboify = function(name, url, options = {}) {
   turboRoutes.push([name, url, options]);
 };
 
+Ember.Router.reopen({
+  setupRouter() {
+    let ret = this._super(...arguments);
+    let container = this.container;
+
+    // monkeypatched ember above on module load
+    turboRoutes.forEach(tuple => {
+      let name = tuple[0];
+      let url = tuple[1];
+      let options = tuple[2];
+      let selector = options.selector || 'body';
+
+      container.register(`route:${name.dasherize()}`, Ember.Route.extend({
+        model() {
+          return $.get(url);
+        }
+      }));
+
+      container.register(`view:${name.dasherize()}`, ServerRenderedView.extend({
+        turboSelector: selector
+      }));
+    });
+
+    return ret;
+  }
+});
+
 let ServerRenderedView = Ember.View.extend({
   didInsertElement() {
     this._handleResponse(this.get('controller.model'));
@@ -66,23 +93,7 @@ let ServerRenderedView = Ember.View.extend({
 });
 
 export function initialize(container, application) {
-  // monkeypatched ember above on module load
-  turboRoutes.forEach(tuple => {
-    let name = tuple[0];
-    let url = tuple[1];
-    let options = tuple[2];
-    let selector = options.selector || 'body';
 
-    container.register(`route:${name}`, Ember.Route.extend({
-      model() {
-        return $.get(url);
-      }
-    }));
-
-    container.register(`view:${name}`, ServerRenderedView.extend({
-      turboSelector: selector
-    }));
-  });
 }
 
 export default {

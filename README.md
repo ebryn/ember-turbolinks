@@ -15,7 +15,7 @@ Inside your `app/router.js`, turboify your server-generated web application by c
 ```js
 Router.map(function() {
   //            <route name> <server url>        <optional parameters>
-  this.turboify('settings',  '/legacy/settings', { container: '#content', path: '/admin/settings' });
+  this.turboify('settings',  '/legacy/settings', { selector: '#content', path: '/admin/settings' });
 });
 ```
 
