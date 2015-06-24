@@ -41,8 +41,8 @@ let ServerRenderedView = Ember.View.extend({
   },
 
   _handleResponse(html) {
-    let html = this._extractHTML(this.turboSelector, html)
-    this.$().html(html);
+    let extractHTML = this._extractHTML(this.turboSelector, html);
+    this.$().html(extractHTML);
     this._setupEvents();
   },
 
